@@ -1,0 +1,8 @@
+FROM node:alpine
+RUN npm install express && npm install redis
+
+COPY ..
+
+ENTRYPOINT ["node"]
+CMD ['webui.js"]
+EXPOSE 8080
