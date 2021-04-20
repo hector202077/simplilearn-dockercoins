@@ -35,12 +35,16 @@ jobs:                                                                          #
         for service in hasher rng
           do
             docker run --detach --name ${service} --network ${service} hector202077/simplilearn-dockercoins:latest-${service}-testing
-            
-        docker run --detach --name test academiaonline/simplilearn-phpinfo:testing
-        while true
+          done
+          
+        docker run --detach --name worker --network redis hector202077/simplilearn-dockercoins:latest-worker-testing
+        for service in hasher rng
           do
-            sleep 10
-            docker logs test 2>&1 | grep started && break
+            docker network connect ${service} worker
+          done
         
+        docker run --detach --name webui --network redis hector202077/simplilearn-dockercoins:latest-webui-testing
+        
+                
                                                                                
        
