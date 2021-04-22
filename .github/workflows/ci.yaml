@@ -44,9 +44,4 @@ jobs:                                                                          #
           done
         
         docker run --detach --name webui --network redis hector202077/simplilearn-dockercoins:latest-webui-testing
-        
-        while true
-          do
-            sleep 10
-            docker logs worker 2>& 1 | grep "Coin found" && break
-          done
+
