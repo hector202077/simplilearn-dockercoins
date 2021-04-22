@@ -30,7 +30,7 @@ jobs:                                                                          #
             docker network create ${service}                                   
           done         
         
-        docker run --detach --name redis --network redis --volumes redis:/data redis
+        docker run --detach --name redis --network redis --volume redis:/data redis
         
         for service in hasher rng
           do
