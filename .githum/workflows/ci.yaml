@@ -22,7 +22,7 @@ jobs:                                                                          #
                                                                                #
         for service in hasher rng webui worker                                     
           do                                                                   
-            docker build --tag hector202077/simplilearn-dockercoins:latest-${service}-testing ${service}
+            docker build --tag academiaonline/simplilearn-dockercoins:latest-${service}-testing ${service}
           done
           
         for service in hasher redis rng                                        
