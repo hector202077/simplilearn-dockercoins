@@ -1,7 +1,7 @@
 FROM python:alpine
 RUN pip install flask
 
-COPY ..
+COPY . .
 
 ENTRYPOINT ["python"]
 CMD ['rng.py"]
