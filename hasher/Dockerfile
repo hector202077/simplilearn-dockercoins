@@ -3,7 +3,7 @@ RUN apk add build-base
 RUN gem install sinatra
 RUN gem install thin
 
-COPY ..
+COPY . .
 
 ENTRYPOINT ["ruby"]
 CMD ["hasher.rb"]
