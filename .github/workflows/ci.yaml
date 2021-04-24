@@ -37,12 +37,17 @@ jobs:                                                                          #
           do
             docker run --detach --name ${service} --network ${service} hector202077/simplilearn-dockercoins:latest-${service}-testing
           done
-          
+        
+        app=worker
+        network=redis
         docker run --detach --name worker --network redis hector202077/simplilearn-dockercoins:latest-worker-testing
-        for service in hasher rng
+        for network in hasher rng
           do
-            docker network connect ${service} worker
+            docker network connect ${network} ${app}
           done
         
-        docker run --detach --name webui --network redis hector202077/simplilearn-dockercoins:latest-webui-testing
+        app=webui
+          network=redis
+          docker run --detach --name ${app} --network ${network} hector202077/simplilearn-dockercoins:latest-${app}-testing
+        
 
